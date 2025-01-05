@@ -35,8 +35,10 @@ First, I checked for missing values and duplicates in the dataset. It's importan
 * Duplicates = 1,279
 
 2.Checking for Imbalanced Dataset
-![abc](img1.png)
-
-
 Next, I checked for class imbalance in the target column. An imbalanced dataset can lead to biased models. The following chart shows the distribution of the target variable:
+
+![](img1.png)
+
+
+
 

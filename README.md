@@ -9,12 +9,12 @@ Beyond model performance, this project addresses ethical considerations, includi
 
 By the end of this project, we aim to deliver a comprehensive analysis that not only solves the classification problem but also offers meaningful guidance for real-world applications.
 
-Objectives:
+<h>Objectives:</h>
 * Perform exploratory data analysis (EDA) and preprocess the dataset to ensure it is clean and suitable for classification tasks.
 * Build, evaluate, and compare multiple classification models using performance metrics such as accuracy, precision, recall, and F1-score.
 * Derive actionable insights from the model's outputs to support decision-making, improve processes, and address business challenges effectively
 
-Dataset:
+<h>Dataset:</h>
 [Wine Quality Dataset](https://archive.ics.uci.edu/dataset/186/wine+quality)
 
 The dataset includes information about:
@@ -24,17 +24,17 @@ The dataset includes information about:
 * Physical characteristics such as residual sugar, chlorides, and sulfur dioxide levels that may influence the wine’s flavor and preservation.
 * Dataset size containing over 1,000 samples, ensuring a sufficient amount of data for model training and evaluation.
 
-Implementation:
-Libraries: sklearn, Matplotlib, pandas, seaborn, NumPy, Scipy, Imblearn
+<h>Implementation:</h>
+**Libraries:** sklearn, Matplotlib, pandas, seaborn, NumPy, Scipy, Imblearn
 
-Exploratory Data Analysis (EDA)
+<h>Exploratory Data Analysis (EDA)/h>
 
-1. Checking for Missing Values
+**1. Checking for Missing Values**
 First, I checked for missing values and duplicates in the dataset. It's important to handle missing data before performing any analysis or model building. Here's the  values of missing data and duplicates:
-* Missing Values = 0
-* Duplicates = 1,279
+* **Missing Values** = 0
+* **Duplicates** = 1,279
 
-2.Checking for Imbalanced Dataset
+**2. Checking for Imbalanced Dataset**
 Next, I checked for class imbalance in the target column. An imbalanced dataset can lead to biased models. The following chart shows the distribution of the target variable:
 
 ![](img1.png)

@@ -1,7 +1,7 @@
 # Wine Quality Prediction and Data Analysis Project
 
 ## Introduction
-This project explores a real-world classification problem using a dataset comprising over 1,000 samples and seven significant features. The objective is to build predictive models that can classify data into predefined categories, providing insights that are both actionable and valuable for decision-making.
+This project explores a real-world classification problem using a dataset comprising over 6,000 samples and eleven significant features. The objective is to build predictive models that can classify data into predefined categories, providing insights that are both actionable and valuable for decision-making.
 
 The workflow begins with exploratory data analysis (EDA) to understand the dataset's structure, uncover patterns, and address challenges such as missing values or imbalances. Data preprocessing ensures the dataset is clean and ready for modeling. Various classification algorithms are applied and evaluated based on performance metrics like accuracy, precision, recall, and F1-score.
 
@@ -35,7 +35,7 @@ First, I checked for missing values and duplicates in the dataset. It's importan
 * **Duplicates** = 1,279
 
 ### 2. Checking for Imbalanced Dataset
-Next, I checked for class imbalance in the target column. An imbalanced dataset can lead to biased models. The following chart shows the distribution of the target variable:
+Next, I checked for class imbalance in the target column. An imbalanced dataset can lead to biased models. The following chart shows the distribution of the target variable, as they are imabalanced .We will apply SMOTE technique to solve this problem.
 
 ![](img1.png)
 
@@ -64,19 +64,30 @@ I also created a histplot for the 'quality' column to analyze its distribution:
 
 ![](img6.png)  
 
-9. Skewness and Kurtosis
-Finally, I checked for skewness and kurtosis in the dataset. These metrics help assess the normality of the data. Here's the output for skewness and kurtosis:
+### 9. Skewness and Kurtosis
+Finally, I checked for skewness and kurtosis in the dataset. These metrics help assess the normality of the data. Some of the columns are highly positively skewed, to standerize it we will use the technique of **Log Transformation**. Here's the output for skewness and kurtosis:
 
 ![](img7.png) 
 
 ## Data Processing ( Feature Engineering)
 ### 1. Outlier Removal
+We have used the **IQR** method to remove outliers that we saw earlier in EDA.
 
 ![](img8.png)  
 
 ### 2. Removing Skewness
+We used the **Log Transformation** technique to remove skewness from our dataset.
 
 ![](img9.png) 
+
+### 3. Feature Scaling
+I used Standard Scaler to standardize features by centering them around a mean of 0 and scaling to unit variance. This ensures consistency and improves the performance of machine learning models sensitive to feature scaling.
+
+## 4. Encoding Target Values
+The target values are encoded as:
+* Ratings 3-4 as "Low Quality"(0)                                                                                                            
+* Ratings 5-6 as "Medium Quality"(1)                                                                                                          
+* Ratings 7-8 as "High Quality"(2)
 
 ### 5. Imbalance to Balanced Dataset
 ![](img10.png) 

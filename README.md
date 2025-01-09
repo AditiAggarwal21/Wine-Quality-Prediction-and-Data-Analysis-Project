@@ -73,12 +73,12 @@ Finally, I checked for skewness and kurtosis in the dataset. These metrics help 
 ### 1. Outlier Removal
 We have used the **IQR** method to remove outliers that we saw earlier in EDA.
 
-![](img8.png)  
+![](img9.png)  
 
 ### 2. Removing Skewness
 We used the **Log Transformation** technique to remove skewness from our dataset.
 
-![](img9.png) 
+![](img10.png) 
 
 ### 3. Feature Scaling
 I used Standard Scaler to standardize features by centering them around a mean of 0 and scaling to unit variance. This ensures consistency and improves the performance of machine learning models sensitive to feature scaling.
@@ -90,19 +90,69 @@ The target values are encoded as:
 * Ratings 7-8 as "High Quality"(2)
 
 ### 5. Imbalance to Balanced Dataset
-![](img10.png) 
+First we checked the division of data between the qualities:
+
 ![](img11.png) 
+
+Then we used SMOTE technique to balance them.
+
+![](img12.png) 
 
 ## Model Selection and Training
 **Chose several classification algorithms to evaluate:**
-Logistic Regression
-Support Vector Machine(SVM)
-Random Forest
-K-Nearest Neighbors(KNN)
-Decision Tree
+* Logistic Regression
+* Support Vector Machine(SVM)
+* Random Forest
+* K-Nearest Neighbors(KNN)
+* Decision Tree
 
-![](img8.png) 
-![](img8.png) 
-![](img8.png) 
+  ### Parameters and Accuracy
+
+To identify the best-performing model, I used **GridSearchCV** to tune hyperparameters for each algorithm. Below is a summary of the best parameters, cross-validated accuracies, and test accuracies for all the models:
+
+| Model                  | Best Parameters                                                | Cross-Validated Accuracy | Test Accuracy |
+|------------------------|---------------------------------------------------------------|--------------------------|---------------|
+| Logistic Regression    | {'C': 21.544, 'solver': 'liblinear'}                          | 0.6868                   | 0.6837        |
+| **SVM**                | **{'C': 100, 'kernel': 'rbf'}**                               | **0.8898**               | **0.9140**    |
+| K-Nearest Neighbors    | {'n_neighbors': 1, 'weights': 'uniform'}                      | 0.8902                   | 0.8832        |
+| **Random Forest**      | **{'max_depth': None, 'min_samples_split': 2, 'n_estimators': 100}** | **0.8940**               | **0.9011**    |
+| Decision Tree          | {'criterion': 'entropy', 'max_depth': None, 'min_samples_split': 2} | 0.8290                   | 0.8232        |
+
+
+### Selected Model
+Based on Test Accuracy and Consistency across performance metrics, **Support Vector Machine(91.40%)** and **Random Forest(90.11%)** were the top performers. Either model could be selected, depending on the computational resources available , as **SVM** is more computationally intensive at prediction time, especially on large datasets. 
+
+### Summary
+Both **Random Forest** and **Support Vector Machine** show high accuracy, precision, and recall across all quality classes, making them ideal choices for this classification task. **KNN** is also a strong secondary model that offers good interpretability when clear decision boundaries are preferred.
+
+### Business Insight
+The high performance of **Random Forest** and **SVM** in both high and low-quality predictions suggests they could be leveraged for business decisions like **customer segmentation** and **quality control** in production.
+
+### Key Performance Metrics Justification
+**The metrics used to evaluate the models are:**
+
+**Accuracy**: Measures overall correctness across all classes, useful for balanced datasets.
+**Precision**: Ensures fewer false positives, crucial for minimizing incorrectly labeling lower-quality wine as higher quality.
+**Recall**: Ensures few instances of each class are missed, especially for high-quality wines.
+**F1-Score**: Balances precision and recall, providing a consolidated view of performance.
+**Confusion Matrix**: Highlights areas where the model confuses classes, offering insights into model strengths and weaknesses.
+
+### Results for Random Forest and Support Vector Machine
+#### Random Forest
+* **Test Accuracy:** 91.11%
+* **Precision, Recall, and F1 Score:**
+  * **Low Quality (Class 0):** Precision: 0.94, Recall: 0.98, F1-Score: 0.96
+  * **Medium Quality (Class 1):** Precision: 0.90, Recall: 0.80, F1-Score: 0.85
+  * **High Quality (Class 2):** Precision: 0.87, Recall: 0.93, F1-Score: 0.90
+* **Confusion Matrix:**
+  
+
+
+
+
+
+
+
+
 
 

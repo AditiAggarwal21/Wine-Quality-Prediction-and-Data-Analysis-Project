@@ -83,7 +83,7 @@ We used the **Log Transformation** technique to remove skewness from our dataset
 ### 3. Feature Scaling
 I used Standard Scaler to standardize features by centering them around a mean of 0 and scaling to unit variance. This ensures consistency and improves the performance of machine learning models sensitive to feature scaling.
 
-## 4. Encoding Target Values
+### 4. Encoding Target Values
 The target values are encoded as:
 * Ratings 3-4 as "Low Quality"(0)                                                                                                            
 * Ratings 5-6 as "Medium Quality"(1)                                                                                                          
@@ -106,7 +106,7 @@ Then we used SMOTE technique to balance them.
 * K-Nearest Neighbors(KNN)
 * Decision Tree
 
-  ### Parameters and Accuracy
+### Parameters and Accuracy
 
 To identify the best-performing model, I used **GridSearchCV** to tune hyperparameters for each algorithm. Below is a summary of the best parameters, cross-validated accuracies, and test accuracies for all the models:
 
@@ -145,6 +145,47 @@ The high performance of **Random Forest** and **SVM** in both high and low-quali
   * **Medium Quality (Class 1):** Precision: 0.90, Recall: 0.80, F1-Score: 0.85
   * **High Quality (Class 2):** Precision: 0.87, Recall: 0.93, F1-Score: 0.90
 * **Confusion Matrix:**
+
+  ![](img13.png) 
+* **Interpretation:** Random Forest performs well across all classes, especially for low and high-quality wines, with high precision and recall. It manages class boundaries effectively, with minimal misclassification.
+* #### Support Vector Machine (SVM)
+**Test Accuracy**: 91.50%
+**Precision, Recall, and F1 Score:**
+**Low Quality (Class 0)**: Precision: 0.95, Recall: 1.00, F1-Score: 0.97
+**Medium Quality (Class 1)**: Precision: 0.91, Recall: 0.82, F1-Score: 0.86
+**High Quality (Class 2)**: Precision: 0.88, Recall: 0.92, F1-Score: 0.90
+**Confusion Matrix:**
+
+![](img14.png) 
+* **Interpretation: SVM** achieves slightly higher accuracy and excels in classifying low and high-quality wines, with nearly perfect precision and recall for these categories. However, there is some challenge in differentiating medium-quality wines from others, leading to lower recall for this class.
+
+### Comparative Analysis
+
+| **Metric**             | **Random Forest**    | **Support Vector Machine** |
+|------------------------|----------------------|----------------------------|
+| **Test Accuracy**       | 91.11%               | 91.50%                     |
+| **Precision**           | 0.90 (average)       | 0.91 (average)             |
+| **Recall**              | 0.90 (average)       | 0.91 (average)             |
+| **F1-Score**            | 0.90 (average)       | 0.91 (average)             |
+| **Strengths**           | Robust, Adaptable    | High Accuracy, Good Recall |
+| **Weaknesses**          | High computational cost | Sensitive to imbalanced classes |
+
+**Performance Comparison**: Both models show excellent performance. **SVM** slightly outperforms **Random Forest** in accuracy, but it comes at the cost of higher computational intensity and some misclassification in the medium-quality category. **Random Forest**, however, remains strong in terms of robustness, interpretability, and consistent performance across class boundaries.
+
+### Metric Justification
+
+* **Precision**: Minimizes false positives, which is important for ensuring quality classification (e.g., high-quality wines should not be misclassified as low-quality).
+* **Recall**: Ensures that few instances from each class, especially high-quality wines, are missed.
+* These metrics balance the need for accurate and reliable classification without misestimating or overestimating any class.
+
+### Final Recommendation
+
+**Support Vector Machine (SVM)** is recommended due to its slightly higher accuracy (91.50%) and strong performance in identifying low and high-quality wines. However, **Random Forest** is an excellent alternative if interpretability and consistent performance across different class boundaries are prioritized.
+
+**Summary**:  
+Both models demonstrate high precision and recall across classes, making them ideal choices for this classification task. The choice between them can depend on computational resources and the specific requirements of the business, such as interpretability or speed at prediction time.
+
+
   
 
 

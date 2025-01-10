@@ -42,43 +42,43 @@ Next, I checked for class imbalance in the target column. An imbalanced dataset 
 ### 3. Checking for Outliers
 I also checked for outliers in the dataset, as they can significantly impact the analysis. The following boxplot shows the outliers in the numeric columns:
 
-![](img2.png)
+![](Output/Outlier_Detection.png)
 
 ### 5. Correlation Analysis
 To understand the relationships between numerical features, I checked for correlations. Here's a heatmap showing the correlation between variables:
 
-![](img3.png)
+![](Output/Correlation_Matrix.png)
 
 ### 6. Pair Plot based on Quality 
 I explored the relationships between features based on the 'quality' column. Here's the pair plot that illustrates these relationships:
 
-![](img4.png)  
+![](Output/Pairplots.png)  
 
 ### 7. Histograms
 I plotted histograms for the numeric columns to understand their distributions:
 
-![](img5.png)  
+![](Output/Histograms.png)  
 
 ### 8. Histplot with Quality Column
 I also created a histplot for the 'quality' column to analyze its distribution:
 
-![](img6.png)  
+![](Output/Histplots.png)  
 
 ### 9. Skewness and Kurtosis
 Finally, I checked for skewness and kurtosis in the dataset. These metrics help assess the normality of the data. Some of the columns are highly positively skewed, to standerize it we will use the technique of **Log Transformation**. Here's the output for skewness and kurtosis:
 
-![](img7.png) 
+![](Ouput/Checking_Skewness.png) 
 
 ## Data Processing ( Feature Engineering)
 ### 1. Outlier Removal
 We have used the **IQR** method to remove outliers that we saw earlier in EDA.
 
-![](img9.png)  
+![](Output/Outlier_Adjusted.png)  
 
 ### 2. Removing Skewness
 We used the **Log Transformation** technique to remove skewness from our dataset.
 
-![](img10.png) 
+![](Output/Skewness_Corrected.png) 
 
 ### 3. Feature Scaling
 I used Standard Scaler to standardize features by centering them around a mean of 0 and scaling to unit variance. This ensures consistency and improves the performance of machine learning models sensitive to feature scaling.
@@ -92,11 +92,11 @@ The target values are encoded as:
 ### 5. Imbalance to Balanced Dataset
 First we checked the division of data between the qualities:
 
-![](img11.png) 
+![](Output/Balanced_Data.png) 
 
 Then we used SMOTE technique to balance them.
 
-![](img12.png) 
+![](Ranked_Data.png) 
 
 ## Model Selection and Training
 **Chose several classification algorithms to evaluate:**
@@ -146,7 +146,7 @@ The high performance of **Random Forest** and **SVM** in both high and low-quali
   * **High Quality (Class 2):** Precision: 0.87, Recall: 0.93, F1-Score: 0.90
 * **Confusion Matrix:**
 
-  ![](img13.png) 
+  ![](Output/Random_Forest_Correlation_Mstrix.png) 
 * **Interpretation:** Random Forest performs well across all classes, especially for low and high-quality wines, with high precision and recall. It manages class boundaries effectively, with minimal misclassification.
 * #### Support Vector Machine (SVM)
 **Test Accuracy**: 91.50%
@@ -156,7 +156,7 @@ The high performance of **Random Forest** and **SVM** in both high and low-quali
 **High Quality (Class 2)**: Precision: 0.88, Recall: 0.92, F1-Score: 0.90
 **Confusion Matrix:**
 
-![](img14.png) 
+![](Output/SVM_Correlation_Matrix.png) 
 * **Interpretation: SVM** achieves slightly higher accuracy and excels in classifying low and high-quality wines, with nearly perfect precision and recall for these categories. However, there is some challenge in differentiating medium-quality wines from others, leading to lower recall for this class.
 
 ### Comparative Analysis

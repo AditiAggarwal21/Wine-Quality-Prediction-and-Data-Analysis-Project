@@ -37,7 +37,7 @@ First, I checked for missing values and duplicates in the dataset. It's importan
 ### 2. Checking for Imbalanced Dataset
 Next, I checked for class imbalance in the target column. An imbalanced dataset can lead to biased models. The following chart shows the distribution of the target variable, as they are imabalanced .We will apply SMOTE technique to solve this problem.
 
-![](https://github.com/AditiAggarwal21/Wine-Quality-Prediction-and-Data-Analysis-Project/blob/main/images/img1)
+![](Output/Imbalanced_Dataset.png)
 
 ### 3. Checking for Outliers
 I also checked for outliers in the dataset, as they can significantly impact the analysis. The following boxplot shows the outliers in the numeric columns:
